@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
 var mongoose = require('mongoose');
-
+var session = require('express-session');
 
 var db = mongoose.connection;
 
@@ -84,6 +84,25 @@ router.post('/', function(req,res, next){
     }
   });
   res.json('inserted');
+});
+
+router.get('/login', function(req,res){
+  console.log('login');
+});
+//return user info when send post login data
+router.post('/login', function(req,res){
+  var sess = req.session;
+  console.log('login');
+  var id = req.body.id;
+  var password = req.body.password;
+  User.find({"id" : id, "password" : password}, function(err, data){
+    if(err){
+      res.json(err.errors);
+    }
+    else{
+      res.json(data);
+    }
+  });
 });
 
 module.exports = router;
