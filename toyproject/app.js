@@ -31,8 +31,7 @@ db.once('open', function(){
 	console.log("Connected to mongodb");
 });
 
-mongoose.connect('mongodb://definetestserver.iptime.org:27017/toyproject');
-//mongoose.connect('mongodb://definetestserver.iptime.org:27017/toyproject');
+mongoose.connect('mongodb://163.180.173.83:27017/toyproject');
 //mongoose.connect('mongodb://localhost:27017');
 
 
